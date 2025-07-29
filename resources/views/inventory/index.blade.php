@@ -1,47 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Inventory Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f5f7fa;
-        }
-        .product-image {
-            width: 80px;
-            height: auto;
-            border-radius: 5px;
-        }
-        .table th, .table td {
-            vertical-align: middle;
-        }
-        .filter-bar {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn-outline-secondary:hover {
-            background-color: #6c757d;
-            color: white;
-        }
-    </style>
-</head>
-<body>
+@extends('layouts.app')
 
-<div class="container mt-5">
-    <<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold">Inventory Dashboard</h2>
-    <div class="d-flex gap-2">
-        <a href="{{ route('inventory.dashboard') }}" class="btn btn-outline-secondary">
-            ⬅️ Back to Dashboard
-        </a>
-        <a href="{{ route('inventory.sync') }}" class="btn btn-primary">
-            🔄 Sync from Shopify
-        </a>
+@section('content')
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
+    .product-image {
+        width: 80px;
+        height: auto;
+        border-radius: 5px;
+    }
+    .table th, .table td {
+        vertical-align: middle;
+    }
+    .filter-bar {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: white;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Inventory Dashboard</h2>
+        <div class="d-flex gap-2">
+            <a href="{{ route('inventory.dashboard') }}" class="btn btn-outline-secondary">
+                ⬅️ Back to Dashboard
+            </a>
+            <a href="{{ route('inventory.sync') }}" class="btn btn-primary">
+                🔄 Sync from Shopify
+            </a>
+        </div>
     </div>
-</div>
-
 
     {{-- Filter Bar --}}
     <form method="GET" action="{{ route('inventory.index') }}" class="filter-bar mb-4">
@@ -210,6 +205,4 @@
         });
     });
 </script>
-
-</body>
-</html>
+@endsection
